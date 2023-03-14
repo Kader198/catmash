@@ -1,11 +1,12 @@
 import { Link, Head } from '@inertiajs/react';
 import {useEffect, useState} from "react";
 import './Styles/heart-image.css';
+import axios from "axios";
 export default function Welcome(props) {
 
         // ! 1. create state for cats images
         const [catsImages, setCatsImages] = useState([]);
-        const [updateCat, setUpdateCat] = useState(0);
+        const [updateShowedImagesCount, setUpdateShowedImagesCount] = useState(0);
         // ! 2. fetch data from api
         useEffect(() => {
             fetch('https://latelier.co/data/cats.json')
@@ -16,15 +17,29 @@ export default function Welcome(props) {
 
         // ! 3. update cat
         useEffect(() => {
-            if (updateCat) {
-                fetch('https://latelier.co/data/cats.json')
-                    .then(response => response.json())
-                    .then(data => setCatsImages(data.images.slice(updateCat, updateCat+2)))
-                    .catch(error => console.log(error));
+            if (updateShowedImagesCount) {
+                axios.get('https://latelier.co/data/cats.json')
+                    .then((response) => {
+                        setCatsImages(response.data.images.slice(updateShowedImagesCount, updateShowedImagesCount+2));
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             }
-        }, [updateCat]);
+        }, [updateShowedImagesCount]);
 
-        // ! 3. return jsx
+    const voteForCat = (id) =>{
+        axios.post('/api/voteForCat', {
+            id: id
+        }).then((response) => {
+            console.log(response);
+            setUpdateShowedImagesCount(updateShowedImagesCount + 2);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+
+    // ! 3. return jsx
         return (
             <section className='py-14'>
                 <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
@@ -53,7 +68,7 @@ export default function Welcome(props) {
                                     </div>
                                     <div className="flex-1 flex items-end mt-6">
                                         <button
-                                            onClick={() => setUpdateCat(updateCat + 2)}
+                                            onClick={() => voteForCat(item.id)}
                                             className='px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700'>
                                             Vote
                                         </button>
