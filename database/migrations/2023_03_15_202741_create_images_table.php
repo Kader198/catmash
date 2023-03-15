@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('votes', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('cat1_id');
-            $table->unsignedInteger('cat2_id');
-            $table->unsignedInteger('winner_id')->nullable();
+        Schema::create('images', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('url');
+            $table->integer('score')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('votes');
+        Schema::dropIfExists('images');
     }
 };

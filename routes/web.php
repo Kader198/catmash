@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -17,29 +18,13 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+    //? Run the ImagesController::index() method to make http get request from https://latelier.co/data/cats.json and store it in Image model
+    ImagesController::storeApiDataInDB();
+
+    return Inertia::render('ImagesVersus', [
+        'images' => \App\Models\Image::all(),
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-Route::get('test', function () {
-    return response()->json([
-        'name' => 'Abigail',
-        'state' => 'CA'
-    ]);
-});
 
 require __DIR__.'/auth.php';

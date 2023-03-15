@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cats', function (Blueprint $table) {
+        Schema::create('versuses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('image');
+            $table->string('image1_id');
+            $table->string('image2_id');
+            $table->string('winner_id');
+            $table->string('loser_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cats');
+        Schema::dropIfExists('versuses');
     }
 };
