@@ -27,10 +27,9 @@ export default function ImagesVersus(props) {
     }, []);
 
 
-    // ! 3. update cat
+    // ! 3. update images
     useEffect(() => {
         if (updateShowedImagesCount) {
-            setImages(images.slice(updateShowedImagesCount, updateShowedImagesCount + 2));
             setLeftImage(images.slice(updateShowedImagesCount, updateShowedImagesCount + 2)[0])
             setRightImage(images.slice(updateShowedImagesCount, updateShowedImagesCount + 2)[1])
         }
@@ -60,8 +59,7 @@ export default function ImagesVersus(props) {
                         {/* Image cat*/}
                         <p>
                             {/*    description for facemash cats */}
-                            description for facemash cats
-                        </p>
+                            Le jeu de comparaison de chats le plus mignon                        </p>
                     </div>
                 </div>
                 <div
@@ -91,6 +89,10 @@ export default function ImagesVersus(props) {
 
                 </div>
 
+            </div>
+
+            <div className={'text-center mt-6'}>
+                <Link href={'api/images/score'} className={'text-center text-blue-500'}>Voir les plus beaux chats</Link>
             </div>
 
 

@@ -16,7 +16,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+require_once 'imageRoutes.php';
 Route::get('/', function () {
     //? Run the ImagesController::index() method to make http get request from https://latelier.co/data/cats.json and store it in Image model
     ImagesController::storeApiDataInDB();

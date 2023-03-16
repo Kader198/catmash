@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Matchup;
 use App\Models\Versus;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ImagesController extends Controller
 {
@@ -20,7 +21,6 @@ class ImagesController extends Controller
                 ['id' => $image['id']],
                 [
                     'url' => $image['url'],
-                    'score' => 0,
                 ]
             );
         }
@@ -60,5 +60,14 @@ class ImagesController extends Controller
 
 
         return response()->json(201);
+    }
+
+
+    public function images_score()
+    {
+
+        return Inertia::render('ImagesScore', [
+            'images' => \App\Models\Image::query()->orderBy('score', 'desc')->get(),
+        ]);
     }
 }
