@@ -51,9 +51,10 @@ export default function ImagesVersus(props) {
     return (
         <section className='py-14'>
             <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+
                 <div className='relative max-w-xl mx-auto sm:text-center'>
                     <h3 className='text-gray-800 text-3xl font-semibold sm:text-4xl'>
-                        Catsmash
+                        <Link href={'/'} className={'text-blue-500'}>Catmash</Link>
                     </h3>
                     <div className='mt-3 max-w-xl'>
                         {/* Image cat*/}

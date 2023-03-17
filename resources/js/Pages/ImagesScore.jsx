@@ -1,5 +1,6 @@
 import ImageSide from "@/Components/ImageSide";
 import CatImage from "@/Assets/images/catmash1.jpg";
+import {Link} from "@inertiajs/react";
 export default function ImagesScore(props) {
     return (
         <section className='py-14'>
@@ -9,7 +10,7 @@ export default function ImagesScore(props) {
                 {/*</div>*/}
                 <div className='relative max-w-xl mx-auto sm:text-center'>
                     <h3 className='text-gray-800 text-3xl font-semibold sm:text-4xl'>
-                        Catsmash
+                        <Link href={'/'} className={'text-blue-500'}>Catmash</Link>
                     </h3>
                     <div className='mt-3 max-w-xl'>
                         {/* Image cat*/}
