@@ -22,7 +22,7 @@ Route::get('/', function () {
     ImagesController::storeApiDataInDB();
 
     return Inertia::render('ImagesVersus', [
-        'images' => \App\Models\Image::all(),
+        'images' => \App\Models\Image::query()->inRandomOrder()->get(),
     ]);
 });
 
