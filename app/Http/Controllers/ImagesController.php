@@ -16,7 +16,7 @@ class ImagesController extends Controller
         // make http get request from https://latelier.co/data/cats.json and store it in Image model
         $data = \Http::get('https://latelier.co/data/cats.json')->json();
 
-        if (Image::query()->count() > 1) {
+        if (Image::query()->count() <= 0) {
             foreach ($data['images'] as $image) {
                 \App\Models\Image::query()->updateOrCreate(
                     ['id' => $image['id']],

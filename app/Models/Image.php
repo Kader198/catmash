@@ -14,6 +14,7 @@ class Image extends Model
     ];
 
     protected $fillable = [
+        'id',
         'url',
         'score',
     ];
