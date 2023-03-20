@@ -1,0 +1,53 @@
+{
+  "_ImageSide-8f46726a.js": {
+    "file": "assets/ImageSide-8f46726a.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Assets/images/catmash1.jpg": {
+    "file": "assets/catmash1-15064df0.jpg",
+    "src": "resources/js/Assets/images/catmash1.jpg"
+  },
+  "resources/js/Pages/ImagesScore.jsx": {
+    "file": "assets/ImagesScore-8dfc79dd.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_ImageSide-8f46726a.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/ImagesScore.jsx"
+  },
+  "resources/js/Pages/ImagesVersus.css": {
+    "file": "assets/ImagesVersus-6ce6f9a0.css",
+    "src": "resources/js/Pages/ImagesVersus.css"
+  },
+  "resources/js/Pages/ImagesVersus.jsx": {
+    "css": [
+      "assets/ImagesVersus-6ce6f9a0.css"
+    ],
+    "file": "assets/ImagesVersus-cc678c66.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_ImageSide-8f46726a.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/ImagesVersus.jsx"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-fff211e1.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.jsx": {
+    "css": [
+      "assets/app-fff211e1.css"
+    ],
+    "dynamicImports": [
+      "resources/js/Pages/ImagesScore.jsx",
+      "resources/js/Pages/ImagesVersus.jsx"
+    ],
+    "file": "assets/app-48ff8d68.js",
+    "isEntry": true,
+    "src": "resources/js/app.jsx"
+  }
+}
