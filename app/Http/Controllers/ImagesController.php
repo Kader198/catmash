@@ -73,4 +73,6 @@ class ImagesController extends Controller
             'images' => \App\Models\Image::query()->orderBy('score', 'desc')->get(),
         ]);
     }
+
+
 }
