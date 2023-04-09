@@ -64,7 +64,7 @@ export default function ImagesVersus(props) {
                     </div>
                 </div>
                 <div
-                    className='mt-10 space-y-6 justify-center gap-6 sm:grid sm:grid-cols-2 sm:space-y-0 lg:grid-cols-2'>
+                    className='mt-10 space-y-6 justify-center gap-6 sm:grid sm:grid-cols-3 sm:space-y-0 lg:grid-cols-2'>
 
                     {/*! left image */}
                     <ImageSide key={1} image={leftImage} handleVersus={() => {

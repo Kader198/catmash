@@ -11,33 +11,16 @@ use Inertia\Inertia;
 class ImagesController extends Controller
 {
 
-    public static function storeApiDataInDB()
-    {
-        // make http get request from https://latelier.co/data/cats.json and store it in Image model
-        $data = \Http::get('https://latelier.co/data/cats.json')->json();
 
-        if (Image::query()->count() <= 0) {
-            foreach ($data['images'] as $image) {
-                \App\Models\Image::query()->updateOrCreate(
-                    ['id' => $image['id']],
-                    [
-                        'id'=>$image['id'],
-                        'url' => $image['url'],
-                    ]
-                );
-            }
-        }
-
-    }
 
 
     public function versus(Request $request)
     {
-        $image_left = $request->input('image_left');
-        $image_right = $request->input('image_right');
+        $image_left = $request->image_left;
+        $image_right = $request->image_right;
 
         // Determine the winning and losing images
-        if ($request->input('winner') == 'image_left') {
+        if ($request->winner == 'image_left') {
             $winner_id = $image_left;
             $loser_id = $image_right;
         } else {
