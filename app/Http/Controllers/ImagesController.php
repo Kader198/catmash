@@ -28,9 +28,10 @@ class ImagesController extends Controller
             $loser_id = $image_left;
         }
 
+
         // Update the scores of the images
-        $winner = Image::find($winner_id);
-        $loser = Image::find($loser_id);
+        $winner = Image::query()->where('id',$winner_id)->first();
+        $loser = Image::query()->where('id',$loser_id)->first();
         $winner->score++;
         $loser->score--;
         $winner->save();
@@ -45,7 +46,7 @@ class ImagesController extends Controller
         $matchup->save();
 
 
-        return response()->json(201);
+        return response('created',201);
     }
 
 

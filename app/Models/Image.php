@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    use HasFactory;
     protected $casts = [
         'id'=>'string',
         'url'=>'string',
@@ -19,7 +18,4 @@ class Image extends Model
         'url',
         'score',
     ];
-
-
-    
 }
